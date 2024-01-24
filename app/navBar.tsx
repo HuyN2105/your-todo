@@ -1,8 +1,14 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Logo from './Assets/Logo.png';
+import Image from 'next/image';
 
-const NavBar = ({ currentPage }) => {
+interface Props {
+	currentPage: string;
+}
+
+const NavBar: React.FC<Props> = ({ currentPage }) => {
 	const pages = [
 		{
 			name: 'Home',
@@ -47,10 +53,7 @@ const NavBar = ({ currentPage }) => {
 							className='btn btn-ghost btn-circle avatar'
 						>
 							<div className='w-10 rounded-full'>
-								<img
-									alt='Tailwind CSS Navbar component'
-									src='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'
-								/>
+								<Image alt='Profile Image' src={Logo} />
 							</div>
 						</div>
 						<ul

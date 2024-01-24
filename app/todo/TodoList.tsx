@@ -3,7 +3,7 @@ import React from 'react';
 function TodoList() {
 	return (
 		<>
-			<div className='overflow-x-auto'>
+			<div className='overflow-x-auto py-4'>
 				<table className='table'>
 					{/* head */}
 					<thead>
