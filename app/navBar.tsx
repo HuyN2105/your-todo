@@ -13,8 +13,8 @@ const NavBar = ({ currentPage }) => {
 			pageLink: '/todo',
 		},
 		{
-			name: 'Contact',
-			pageLink: '/contact',
+			name: 'About',
+			pageLink: '/about',
 		},
 	];
 

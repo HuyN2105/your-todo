@@ -4,7 +4,7 @@ import NavBar from '../navBar';
 const page = () => {
 	return (
 		<>
-			<NavBar currentPage='Contact' />
+			<NavBar currentPage='About' />
 		</>
 	);
 };
