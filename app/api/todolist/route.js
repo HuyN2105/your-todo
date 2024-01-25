@@ -1,10 +1,23 @@
-import connectMongoDB from '../../../libs/mongodb';
-import TodoList from '../../../models/todo';
+import connectMongoDB from '@/libs/mongodb';
+import TodoList from '@/models/todo';
 import { NextResponse } from 'next/server';
 
 export async function POST(req) {
-	const { id, title, detail, completed } = await req.json();
+	const { title, detail, completed } = await req.json();
 	await connectMongoDB();
-	await TodoList.create({ id, title, detail, completed });
-	return NextResponse.json({ message: 'TodoList Created' }, { status: 201 });
+	await TodoList.create({ title, detail, completed });
+	return NextResponse.json({ message: 'TodoItem Added' }, { status: 201 });
+}
+
+export async function GET() {
+	await connectMongoDB();
+	const todoList = await TodoList.find();
+	return NextResponse.json({ todoList });
+}
+
+export async function DELETE(req) {
+	const id = req.nextUrl.searchParams.get('id');
+	await connectMongoDB();
+	await TodoList.findByIdAndDelete(id);
+	return NextResponse.json({ message: 'TodoItem deleted' }, { status: 200 });
 }

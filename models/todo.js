@@ -2,7 +2,6 @@ import mongoose, { Schema } from 'mongoose';
 
 const todoListSchemna = new Schema(
 	{
-		id: String,
 		title: String,
 		detail: String,
 		completed: Boolean,
