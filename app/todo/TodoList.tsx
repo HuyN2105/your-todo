@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Key } from 'react';
 
 interface List {
 	_id: String;
@@ -46,7 +46,7 @@ export default async function TodoList() {
 					</thead>
 					<tbody>
 						{todoLists.map((item) => (
-							<tr>
+							<tr key={item._id as Key}>
 								<th>
 									<label>
 										<input type='checkbox' className='checkbox' />

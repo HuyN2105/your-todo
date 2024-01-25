@@ -8,6 +8,7 @@ function Todo() {
 		<>
 			<NavBar currentPage='Todo' />
 			<TodoList />
+			{/* <Test {...todoLists} /> */}
 			<AddTodo />
 		</>
 	);
