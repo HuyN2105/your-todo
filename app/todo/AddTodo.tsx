@@ -16,11 +16,11 @@ interface Props {
 	useHandleReFetch: Function;
 }
 
-function AddTodo({ todoLists, useHandleReFetch }: Props) {
+function AddTodo({ useHandleReFetch }: Props) {
 	const [newItemTitle, setNewItemTitle] = useState('');
 	const [newItemDetail, setNewItemDetail] = useState('');
 
-	function handleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+	function useHandleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
 		e.preventDefault();
 		try {
 			fetch('/api/todolist/', {
@@ -59,7 +59,7 @@ function AddTodo({ todoLists, useHandleReFetch }: Props) {
 				</div>
 				<button
 					className='btn btn-outline btn-info float-end'
-					onClick={(e) => handleSubmit(e)}
+					onClick={(e) => useHandleSubmit(e)}
 				>
 					Add
 				</button>

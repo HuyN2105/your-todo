@@ -29,7 +29,7 @@ function Todo() {
 		});
 	}
 
-	handleReFetch();
+	useHandleReFetch();
 
 	return (
 		<>
