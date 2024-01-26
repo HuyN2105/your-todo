@@ -23,7 +23,7 @@ function AddTodo({ todoLists, handleReFetch }: Props) {
 	function handleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
 		e.preventDefault();
 		try {
-			fetch('http://localhost:3000/api/todolist/', {
+			fetch('/api/todolist/', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -42,7 +42,7 @@ function AddTodo({ todoLists, handleReFetch }: Props) {
 
 	return (
 		<>
-			<form className='fixed flex justify-center top-full -translate-y-14 -translate-x-4 w-full'>
+			<form className='fixed flex justify-center top-full -translate-y-14 -translate-x-1 w-screen'>
 				<div className='w-9/12 join mr-1'>
 					<input
 						type='text'

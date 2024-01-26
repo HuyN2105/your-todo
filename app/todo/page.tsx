@@ -21,7 +21,7 @@ function Todo() {
 
 	function handleReFetch() {
 		useEffect(() => {
-			fetch('http://localhost:3000/api/todolist', { cache: 'no-store' })
+			fetch('/api/todolist', { cache: 'no-store' })
 				.then((res) => res.json())
 				.then((data) => {
 					setTodoLists(data.todoList);

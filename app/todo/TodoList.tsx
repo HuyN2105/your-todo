@@ -1,5 +1,7 @@
 'use client';
 import React, { Key } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 interface List {
 	_id: String;
@@ -32,11 +34,22 @@ interface props {
 // };
 
 function TodoList({ todoLists }: props) {
-	const handleStateChange = (
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	) => {
-		e.preventDefault();
+	const handleStateChange = (item: List) => {
+		const IDChangeURL = '/api/todolist/' + item._id;
+		fetch(IDChangeURL, {
+			method: 'PUT',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify({
+				newTitle: item.title,
+				newDetail: item.detail,
+				newState: !item.completed,
+			}),
+		});
 	};
+
+	const handleDelete = (id: String) => {};
 
 	return (
 		<>
@@ -52,6 +65,7 @@ function TodoList({ todoLists }: props) {
 							</th>
 							<th>Todo</th>
 							<th>Detail</th>
+							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -63,18 +77,30 @@ function TodoList({ todoLists }: props) {
 											type='checkbox'
 											className='checkbox'
 											checked={item.completed as boolean}
+											onChange={(e) => handleStateChange(item)}
 										/>
 									</label>
 								</th>
 								<td>
 									<div className='flex items-center gap-3'>
-										<div className='font-bold'>{item.title}</div>
+										<div
+											className={
+												item.completed ? 'font-bold line-through' : 'font-bold'
+											}
+										>
+											{item.title}
+										</div>
 									</div>
 								</td>
 								<td>
 									<span className='badge badge-ghost badge-sm'>
 										{item.detail}
 									</span>
+								</td>
+								<td>
+									<button onClick={() => handleDelete(item._id)}>
+										<FontAwesomeIcon icon={faTrash} className='text-error' />
+									</button>
 								</td>
 							</tr>
 						))}
