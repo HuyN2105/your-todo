@@ -1,3 +1,4 @@
+'use client';
 import React, { Key } from 'react';
 
 interface List {
@@ -10,24 +11,33 @@ interface List {
 	__v: Number;
 }
 
-const getTodoList = async () => {
-	try {
-		const res = await fetch('http://localhost:3000/api/todolist/', {
-			cache: 'no-store',
-		});
+interface props {
+	todoLists: List[];
+}
 
-		if (!res.ok) {
-			throw new Error('Failed to fetch todoList');
-		}
-		const data = await res.json();
-		return data.todoList;
-	} catch (error) {
-		console.log('Error Loading TodoList: ', error);
-	}
-};
+// const getTodoList = async () => {
+// 	try {
+// 		const res = await fetch('http://localhost:3000/api/todolist/', {
+// 			cache: 'no-store',
+// 		});
 
-export default async function TodoList() {
-	const todoLists: List[] = await getTodoList();
+// 		if (!res.ok) {
+// 			throw new Error('Failed to fetch todoList');
+// 		}
+// 		const data = await res.json();
+// 		return data.todoList;
+// 	} catch (error) {
+// 		console.log('Error Loading TodoList: ', error);
+// 	}
+// };
+
+function TodoList({ todoLists }: props) {
+	const handleStateChange = (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
+		e.preventDefault();
+	};
+
 	return (
 		<>
 			<div className='overflow-x-auto py-4'>
@@ -49,7 +59,11 @@ export default async function TodoList() {
 							<tr key={item._id as Key}>
 								<th>
 									<label>
-										<input type='checkbox' className='checkbox' />
+										<input
+											type='checkbox'
+											className='checkbox'
+											checked={item.completed as boolean}
+										/>
 									</label>
 								</th>
 								<td>
@@ -78,3 +92,5 @@ export default async function TodoList() {
 		</>
 	);
 }
+
+export default TodoList;

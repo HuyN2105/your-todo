@@ -26,7 +26,8 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"app/todo/TodoList.tsx"
+		"app/todo/TodoList.tsx",
+		"app/todo/page.tsx"
 	],
 	"exclude": ["node_modules"]
 }
