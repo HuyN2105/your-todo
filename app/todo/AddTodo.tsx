@@ -26,12 +26,12 @@ function AddTodo() {
 
 	return (
 		<>
-			<form className='fixed flex justify-center top-full -translate-y-14 -translate-x-1 w-screen'>
+			<form className='fixed flex justify-center top-full -translate-y-16 -translate-x-1 w-screen bg-base-100 h-20 pt-2'>
 				<div className='w-9/12 join mr-1'>
 					<input
 						type='text'
 						placeholder={newItemTitle.length == 0 ? 'Todo Tile' : newItemTitle}
-						className='input input-bordered input-primary join-item w-1/2'
+						className='input input-bordered input-primary join-it<e>m w-1/2'
 						onChange={(e) => setNewItemTitle(e.target.value)}
 					/>
 					<input
