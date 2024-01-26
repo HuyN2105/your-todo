@@ -34,7 +34,7 @@ interface props {
 // };
 
 function TodoList({ todoLists }: props) {
-	const useHandleStateChange = (item: List) => {
+	const handleStateChange = (item: List) => {
 		const IDChangeURL = '/api/todolist/' + item._id;
 		fetch(IDChangeURL, {
 			method: 'PUT',
@@ -49,7 +49,7 @@ function TodoList({ todoLists }: props) {
 		});
 	};
 
-	const useHandleDeleteItem = (item: List) => {
+	const handleDeleteItem = (item: List) => {
 		const IDDeleteURL = '/api/todolist/?id=' + item._id;
 		fetch(IDDeleteURL, {
 			method: 'DELETE',
@@ -85,7 +85,7 @@ function TodoList({ todoLists }: props) {
 											type='checkbox'
 											className='checkbox'
 											checked={item.completed as boolean}
-											onChange={(e) => useHandleStateChange(item)}
+											onChange={(e) => handleStateChange(item)}
 										/>
 									</label>
 								</th>
@@ -106,7 +106,7 @@ function TodoList({ todoLists }: props) {
 									</span>
 								</td>
 								<td>
-									<button onClick={() => useHandleDeleteItem(item)}>
+									<button onClick={() => handleDeleteItem(item)}>
 										<FontAwesomeIcon icon={faTrash} className='text-error' />
 									</button>
 								</td>

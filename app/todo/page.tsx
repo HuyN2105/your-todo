@@ -35,7 +35,7 @@ function Todo() {
 		<>
 			<NavBar currentPage='Todo' />
 			<TodoList todoLists={todoLists} />
-			<AddTodo todoLists={todoLists} useHandleReFetch={useHandleReFetch} />
+			<AddTodo />
 		</>
 	);
 }

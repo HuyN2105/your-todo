@@ -1,26 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 
-interface List {
-	_id: String;
-	title: String;
-	detail: String;
-	completed: Boolean;
-	createdAt: String;
-	updatedAt: String;
-	__v: Number;
-}
-
-interface Props {
-	todoLists: String[];
-	useHandleReFetch: Function;
-}
-
-function AddTodo({ useHandleReFetch }: Props) {
+function AddTodo() {
 	const [newItemTitle, setNewItemTitle] = useState('');
 	const [newItemDetail, setNewItemDetail] = useState('');
 
-	function useHandleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+	function HandleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
 		e.preventDefault();
 		try {
 			fetch('/api/todolist/', {
@@ -34,7 +19,6 @@ function AddTodo({ useHandleReFetch }: Props) {
 					completed: false,
 				}),
 			});
-			useHandleReFetch();
 			setNewItemDetail('');
 			setNewItemTitle('');
 		} catch (error) {}
@@ -59,7 +43,7 @@ function AddTodo({ useHandleReFetch }: Props) {
 				</div>
 				<button
 					className='btn btn-outline btn-info float-end'
-					onClick={(e) => useHandleSubmit(e)}
+					onClick={(e) => HandleSubmit(e)}
 				>
 					Add
 				</button>
