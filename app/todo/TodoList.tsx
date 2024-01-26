@@ -49,7 +49,15 @@ function TodoList({ todoLists }: props) {
 		});
 	};
 
-	const handleDelete = (id: String) => {};
+	const handleDeleteItem = (item: List) => {
+		const IDDeleteURL = '/api/todolist/?id=' + item._id;
+		fetch(IDDeleteURL, {
+			method: 'DELETE',
+			headers: {
+				'Content-type': 'application/json',
+			},
+		});
+	};
 
 	return (
 		<>
@@ -98,7 +106,7 @@ function TodoList({ todoLists }: props) {
 									</span>
 								</td>
 								<td>
-									<button onClick={() => handleDelete(item._id)}>
+									<button onClick={() => handleDeleteItem(item)}>
 										<FontAwesomeIcon icon={faTrash} className='text-error' />
 									</button>
 								</td>
