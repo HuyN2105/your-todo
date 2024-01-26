@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './navBar';
 import Link from 'next/link';
 import Footer from './Footer';
+import Image from 'next/image';
 
 function Home() {
 	return (
@@ -26,7 +27,7 @@ function Home() {
 				<section className='w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800'>
 					<div className='container px-4 md:px-6'>
 						<div className='grid items-center gap-4 md:grid-cols-2 lg:gap-12'>
-							<img
+							<Image
 								alt='Image'
 								className='mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last'
 								height='310'

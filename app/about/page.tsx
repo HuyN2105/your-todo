@@ -25,9 +25,9 @@ export default function Component() {
 									About Me
 								</h1>
 								<p className='max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400'>
-									Hi, I'm a senior high school student passionate about coding
-									and problem-solving. I created this to-do app to help students
-									like me manage their tasks and improve productivity.
+									Hi, I&apos;m a senior high school student passionate about
+									coding and problem-solving. I created this to-do app to help
+									students like me manage their tasks and improve productivity.
 								</p>
 							</div>
 							<div className='space-y-2'>
@@ -38,7 +38,7 @@ export default function Component() {
 									As a student, I often found it challenging to keep track of
 									all my assignments, projects, and deadlines. I wanted a simple
 									and intuitive tool that could help me manage my tasks
-									effectively. That's why I created this to-do app.
+									effectively. That&apos;s why I created this to-do app.
 								</p>
 							</div>
 							<div className='space-y-2'>
