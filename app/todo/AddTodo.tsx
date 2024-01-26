@@ -13,10 +13,10 @@ interface List {
 
 interface Props {
 	todoLists: String[];
-	handleReFetch: Function;
+	useHandleReFetch: Function;
 }
 
-function AddTodo({ todoLists, handleReFetch }: Props) {
+function AddTodo({ todoLists, useHandleReFetch }: Props) {
 	const [newItemTitle, setNewItemTitle] = useState('');
 	const [newItemDetail, setNewItemDetail] = useState('');
 
@@ -34,7 +34,7 @@ function AddTodo({ todoLists, handleReFetch }: Props) {
 					completed: false,
 				}),
 			});
-			handleReFetch();
+			useHandleReFetch();
 			setNewItemDetail('');
 			setNewItemTitle('');
 		} catch (error) {}

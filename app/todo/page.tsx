@@ -19,7 +19,7 @@ function Todo() {
 	const [todoLists, setTodoLists] = useState([]);
 	const [reFetch, setReFetch] = useState(['']);
 
-	function handleReFetch() {
+	function useHandleReFetch() {
 		useEffect(() => {
 			fetch('/api/todolist', { cache: 'no-store' })
 				.then((res) => res.json())
@@ -35,7 +35,7 @@ function Todo() {
 		<>
 			<NavBar currentPage='Todo' />
 			<TodoList todoLists={todoLists} />
-			<AddTodo todoLists={todoLists} handleReFetch={handleReFetch} />
+			<AddTodo todoLists={todoLists} useHandleReFetch={useHandleReFetch} />
 		</>
 	);
 }
