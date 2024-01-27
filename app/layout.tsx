@@ -18,8 +18,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<>
-			<SpeedInsights />
 			<html lang='en' data-theme='dark'>
+				<SpeedInsights />
 				<body className={inter.className}>{children}</body>
 			</html>
 		</>
