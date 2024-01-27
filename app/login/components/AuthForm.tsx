@@ -1,13 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
 function AuthForm() {
-	const { push } = useRouter();
-
-	if (sessionStorage.getItem('userId') != null) push('/todo');
+	if (typeof window !== 'undefined' && localStorage.getItem('userId') != null)
+		redirect('/todo');
 
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');
@@ -42,8 +41,9 @@ function AuthForm() {
 			fetch(LoginRequest, { cache: 'no-store' })
 				.then((res) => res.json())
 				.then((data) => {
-					sessionStorage.setItem('userId', data.userId);
-					push('/todo');
+					if (typeof window !== 'undefined')
+						localStorage.setItem('userId', data.userId);
+					redirect('/todo');
 				});
 		}
 	};
