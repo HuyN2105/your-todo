@@ -7,7 +7,7 @@ import clsx from 'clsx';
 function AuthForm() {
 	const { push } = useRouter();
 
-	if (localStorage.getItem('userId') != null) push('/todo');
+	if (sessionStorage.getItem('userId') != null) push('/todo');
 
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');
@@ -42,7 +42,7 @@ function AuthForm() {
 			fetch(LoginRequest, { cache: 'no-store' })
 				.then((res) => res.json())
 				.then((data) => {
-					localStorage.setItem('userId', data.userId);
+					sessionStorage.setItem('userId', data.userId);
 					push('/todo');
 				});
 		}
