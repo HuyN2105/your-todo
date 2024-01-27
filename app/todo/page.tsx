@@ -11,7 +11,7 @@ function Todo() {
 		redirect('/login');
 
 	const [todoLists, setTodoLists] = useState([]);
-	const ListRequestURL = '/api/userlist/' + sessionStorage.getItem('userId');
+	const ListRequestURL = '/api/userlist/' + localStorage.getItem('userId');
 
 	// function useHandleReFetch() {
 	useEffect(() => {
