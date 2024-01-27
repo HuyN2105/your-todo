@@ -19,8 +19,8 @@ function AddTodo() {
 					completed: false,
 				}),
 			});
-			setNewItemDetail('');
 			setNewItemTitle('');
+			setNewItemDetail('');
 		} catch (error) {}
 	}
 
@@ -31,7 +31,7 @@ function AddTodo() {
 					<input
 						type='text'
 						placeholder={newItemTitle.length == 0 ? 'Todo Tile' : newItemTitle}
-						className='input input-bordered input-primary join-it<e>m w-1/2'
+						className='input input-bordered input-primary join-item w-1/2'
 						onChange={(e) => setNewItemTitle(e.target.value)}
 					/>
 					<input
