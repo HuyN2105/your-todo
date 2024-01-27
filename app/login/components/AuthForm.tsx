@@ -11,7 +11,7 @@ function AuthForm() {
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');
 	const [truePass, setTruePass] = useState('');
-
+	const { push } = useRouter();
 	const {
 		register,
 		formState: { errors },
@@ -43,7 +43,7 @@ function AuthForm() {
 				.then((data) => {
 					if (typeof window !== 'undefined')
 						localStorage.setItem('userId', data.userId);
-					redirect('/todo');
+					push('/todo');
 				});
 		}
 	};

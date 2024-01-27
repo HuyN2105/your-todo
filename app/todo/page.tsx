@@ -7,7 +7,8 @@ import TodoList from './TodoList';
 import AddTodo from './AddTodo';
 
 function Todo() {
-	if (sessionStorage.getItem('userId') == null) redirect('/login');
+	if (typeof window !== 'undefined' && localStorage.getItem('userId') == null)
+		redirect('/login');
 
 	const [todoLists, setTodoLists] = useState([]);
 	const ListRequestURL = '/api/userlist/' + sessionStorage.getItem('userId');
