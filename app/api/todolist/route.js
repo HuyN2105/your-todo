@@ -3,9 +3,9 @@ import TodoList from '@/models/todo';
 import { NextResponse } from 'next/server';
 
 export async function POST(req) {
-	const { title, detail, completed } = await req.json();
+	const { userId, title, detail, completed } = await req.json();
 	await connectMongoDB();
-	await TodoList.create({ title, detail, completed });
+	await TodoList.create({ userId, title, detail, completed });
 	return NextResponse.json({ message: 'TodoItem Added' }, { status: 201 });
 }
 

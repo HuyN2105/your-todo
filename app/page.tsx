@@ -3,6 +3,7 @@ import NavBar from './navBar';
 import Link from 'next/link';
 import Footer from './Footer';
 import Image from 'next/image';
+import TodoImg from './Assets/todo.png';
 
 function Home() {
 	return (
@@ -20,7 +21,9 @@ function Home() {
 								A simple and intuitive todo management app made by a senior high
 								school students.
 							</p>
-							<button className='btn btn-primary w-[148px]'>Get Started</button>
+							<Link className='btn btn-primary w-[148px]' href='/login'>
+								Get Started
+							</Link>
 						</div>
 					</div>
 				</section>
@@ -31,7 +34,7 @@ function Home() {
 								alt='Image'
 								className='mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last'
 								height='310'
-								src='/placeholder.svg'
+								src={TodoImg}
 								width='550'
 							/>
 							<div className='flex flex-col justify-center space-y-4'>
@@ -43,8 +46,8 @@ function Home() {
 										Manage your todo with ease
 									</h2>
 									<p className='max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400'>
-										A simple and intuitive todo management app made for high
-										school students.
+										A simple and intuitive todo management app made for
+										everyone.
 									</p>
 								</div>
 								<div className='flex flex-col gap-2 min-[400px]:flex-row'>

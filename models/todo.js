@@ -1,7 +1,8 @@
 import mongoose, { Schema } from 'mongoose';
 
-const todoListSchemna = new Schema(
+const todoListSchema = new Schema(
 	{
+		userId: String,
 		title: String,
 		detail: String,
 		completed: Boolean,
@@ -12,6 +13,6 @@ const todoListSchemna = new Schema(
 );
 
 const TodoList =
-	mongoose.models.TodoList || mongoose.model('TodoList', todoListSchemna);
+	mongoose.models.TodoList || mongoose.model('TodoList', todoListSchema);
 
 export default TodoList;

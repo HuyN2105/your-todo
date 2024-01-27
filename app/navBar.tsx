@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Logo from './Assets/Logo.png';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 
 interface Props {
 	currentPage: string;
@@ -61,16 +62,15 @@ const NavBar: React.FC<Props> = ({ currentPage }) => {
 							className='mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52'
 						>
 							<li>
-								<a className='justify-between'>
-									Profile
-									<span className='badge'>New</span>
-								</a>
-							</li>
-							<li>
-								<a>Settings</a>
-							</li>
-							<li>
-								<a className='text-warning'>Logout</a>
+								<button
+									className='text-warning'
+									onClick={() => {
+										localStorage.removeItem('userId');
+										redirect('/');
+									}}
+								>
+									Logout
+								</button>
 							</li>
 						</ul>
 					</div>
