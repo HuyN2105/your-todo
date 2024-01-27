@@ -65,7 +65,7 @@ const NavBar: React.FC<Props> = ({ currentPage }) => {
 								<button
 									className='text-warning'
 									onClick={() => {
-										sessionStorage.removeItem('userId');
+										localStorage.removeItem('userId');
 										redirect('/');
 									}}
 								>
