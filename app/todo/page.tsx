@@ -17,7 +17,6 @@ import AddTodo from './AddTodo';
 
 function Todo() {
 	const [todoLists, setTodoLists] = useState([]);
-	const [reFetch, setReFetch] = useState(['']);
 
 	function useHandleReFetch() {
 		useEffect(() => {
