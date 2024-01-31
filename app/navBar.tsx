@@ -3,14 +3,16 @@ import React from 'react';
 import Link from 'next/link';
 import Logo from './Assets/Logo.png';
 import Image from 'next/image';
-import { redirect } from 'next/navigation';
 import { signOut } from 'next-auth/react';
+import getCurrentUser from './actions/getCurrentUser';
+import { usePathname } from 'next/navigation';
 
-interface Props {
-	currentPage: string;
-}
+const NavBar = () => {
+	// const currentUser = await getCurrentUser();
 
-const NavBar: React.FC<Props> = ({ currentPage }) => {
+	const cp = usePathname();
+	console.log(cp);
+
 	const pages = [
 		{
 			name: 'Home',
@@ -39,7 +41,7 @@ const NavBar: React.FC<Props> = ({ currentPage }) => {
 					{pages.map((page) => (
 						<Link
 							role='tab'
-							className={page.name == currentPage ? 'tab tab-active' : 'tab'}
+							className={page.pageLink == cp ? 'tab tab-active' : 'tab'}
 							key={page.name}
 							href={page.pageLink}
 						>

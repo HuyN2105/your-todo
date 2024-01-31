@@ -6,7 +6,6 @@ import NavBar from '../navBar';
 function Users() {
 	return (
 		<>
-			<NavBar currentPage='' />
 			<button onClick={() => signOut()}>Logout</button>
 		</>
 	);

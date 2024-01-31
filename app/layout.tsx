@@ -5,6 +5,7 @@ import './globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import AuthContext from './context/AuthContext';
 import ToasterContext from './context/ToasterContext';
+import NavBar from './navBar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
 				<body className={inter.className}>
 					<AuthContext>
 						<ToasterContext />
+						<NavBar />
 						{children}
 					</AuthContext>
 				</body>

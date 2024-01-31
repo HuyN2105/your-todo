@@ -22,7 +22,6 @@ function Todo() {
 
 	return (
 		<>
-			<NavBar currentPage='Todo' />
 			<TodoList todoLists={todoLists} />
 			<AddTodo />
 		</>
