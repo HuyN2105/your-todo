@@ -4,12 +4,9 @@ import Link from 'next/link';
 import Logo from './Assets/Logo.png';
 import Image from 'next/image';
 import { signOut } from 'next-auth/react';
-import getCurrentUser from './actions/getCurrentUser';
 import { usePathname } from 'next/navigation';
 
 const NavBar = () => {
-	// const currentUser = await getCurrentUser();
-
 	const cp = usePathname();
 	console.log(cp);
 
