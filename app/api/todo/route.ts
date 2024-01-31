@@ -23,3 +23,23 @@ export async function POST(request: Request) {
 		return new NextResponse('Internal Error', { status: 500 });
 	}
 }
+
+export async function PUT(request: Request) {
+	try {
+		const body = await request.json();
+		const { itemId, newState } = body;
+		const updateItem = await prisma.todoItem.update({
+			where: {
+				id: itemId,
+			},
+			data: {
+				completed: newState,
+			},
+		});
+
+		return NextResponse.json(updateItem);
+	} catch (error: any) {
+		console.log(error, 'UPDATE_ITEM_ERROR');
+		return new NextResponse('Internal Error', { status: 500 });
+	}
+}

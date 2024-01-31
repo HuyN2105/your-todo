@@ -14,7 +14,7 @@ function AddTodo() {
 		e.preventDefault();
 		try {
 			axios
-				.post('/api/addtodo', {
+				.post('/api/todo', {
 					title: newItemTitle,
 					detail: newItemDetail,
 					userEmail: session?.data?.user?.email,

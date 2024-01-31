@@ -2,6 +2,9 @@
 import React, { Key } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { pusherServer } from '@/app/libs/pusher';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 interface List {
 	_id: String;
@@ -33,30 +36,19 @@ interface props {
 // 	}
 // };
 
-function TodoList({ todoLists }: props) {
+function TodoList() {
 	const handleStateChange = (item: List) => {
-		const IDChangeURL = '/api/todolist/' + item._id;
-		fetch(IDChangeURL, {
-			method: 'PUT',
-			headers: {
-				'Content-type': 'application/json',
-			},
-			body: JSON.stringify({
-				newTitle: item.title,
-				newDetail: item.detail,
-				newState: !item.completed,
-			}),
-		});
+		axios
+			.put('/api/todo', { itemId: item._id, newState: !item.completed })
+			.then(() => toast.success('Done!'))
+			.catch(() => toast.error('Something went wrong!'));
 	};
 
 	const handleDeleteItem = (item: List) => {
-		const IDDeleteURL = '/api/todolist/?id=' + item._id;
-		fetch(IDDeleteURL, {
-			method: 'DELETE',
-			headers: {
-				'Content-type': 'application/json',
-			},
-		});
+		axios
+			.post('/api/todo/delete', { itemId: item._id })
+			.then(() => toast.success('Delete item successfully!'))
+			.catch(() => toast.error('Something went wrong!'));
 	};
 
 	return (
@@ -77,7 +69,7 @@ function TodoList({ todoLists }: props) {
 						</tr>
 					</thead>
 					<tbody>
-						{todoLists.map((item) => (
+						{/* {todoLists.map((item) => (
 							<tr key={item._id as Key}>
 								<th>
 									<label>
@@ -129,7 +121,7 @@ function TodoList({ todoLists }: props) {
 									</div>
 								</td>
 							</tr>
-						))}
+						))} */}
 					</tbody>
 					{/* foot */}
 					<tfoot>
