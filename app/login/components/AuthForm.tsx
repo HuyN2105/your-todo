@@ -14,7 +14,6 @@ type Variant = 'LOGIN' | 'REGISTER';
 
 function AuthForm() {
 	const session = useSession();
-	console.log(session);
 	const router = useRouter();
 	const [variant, setVariant] = useState<Variant>('LOGIN');
 	const [isLoading, setIsLoading] = useState(false);

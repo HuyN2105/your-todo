@@ -49,8 +49,8 @@ model TodoItem{
   createdAt DateTime @default(now())
   title String?
   detail String?
-  completed Boolean?
+  completed Boolean? @default(false)
 
-  userEmail String @unique
+  userEmail String
   user User @relation(fields: [userEmail], references: [email], onDelete: Cascade)
 }

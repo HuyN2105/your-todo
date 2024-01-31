@@ -1,25 +1,26 @@
 'use client';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 function AddTodo() {
+	const session = useSession();
+
 	const [newItemTitle, setNewItemTitle] = useState('');
 	const [newItemDetail, setNewItemDetail] = useState('');
 
 	function HandleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
 		e.preventDefault();
 		try {
-			fetch('/api/todolist/', {
-				method: 'POST',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: JSON.stringify({
-					userId: localStorage.getItem('userId'),
+			axios
+				.post('/api/addtodo', {
 					title: newItemTitle,
 					detail: newItemDetail,
-					completed: false,
-				}),
-			});
+					userEmail: session?.data?.user?.email,
+				})
+				.then(() => toast.success('Item added successfully!'))
+				.catch(() => toast.error('Something went wrong!'));
 			setNewItemTitle('');
 			setNewItemDetail('');
 		} catch (error) {}
