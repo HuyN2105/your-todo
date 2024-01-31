@@ -1,6 +1,5 @@
 import type { Config } from 'tailwindcss';
 
-
 const config: Config = {
 	content: [
 		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -17,33 +16,35 @@ const config: Config = {
 		},
 	},
 
-	plugins: [require('daisyui')],
+	plugins: [
+		require('@tailwindcss/forms')({ strategy: 'class' }),
+		require('daisyui'),
+	],
 
-  daisyui: {
+	daisyui: {
 		themes: [
 			{
-				'CustomDark': {
-					'primary': '#00a5ff',
+				CustomDark: {
+					primary: '#00a5ff',
 
-					'secondary': '#00c1ff',
+					secondary: '#00c1ff',
 
-					'accent': '#00ae85',
+					accent: '#00ae85',
 
-					'neutral': '#050a0a',
+					neutral: '#050a0a',
 
 					'base-100': '#1e212b',
 
-					'info': '#00baff',
+					info: '#00baff',
 
-					'success': '#50d76a',
+					success: '#50d76a',
 
-					'warning': '#fea600',
+					warning: '#fea600',
 
-					'error': '#ff003a',
+					error: '#ff003a',
 				},
 			},
 		],
 	},
-
 };
 export default config;
