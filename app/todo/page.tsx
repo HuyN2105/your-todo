@@ -7,11 +7,8 @@ import TodoList from './TodoList';
 import AddTodo from './AddTodo';
 
 function Todo() {
-	if (typeof window !== 'undefined' && localStorage.getItem('userId') == null)
-		redirect('/login');
-
 	const [todoLists, setTodoLists] = useState([]);
-	const ListRequestURL = '/api/userlist/' + localStorage.getItem('userId');
+	const ListRequestURL = '/api/userlist/';
 
 	// function useHandleReFetch() {
 	useEffect(() => {

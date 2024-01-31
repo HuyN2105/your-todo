@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Logo from './Assets/Logo.png';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 
 interface Props {
 	currentPage: string;
@@ -62,13 +63,7 @@ const NavBar: React.FC<Props> = ({ currentPage }) => {
 							className='mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52'
 						>
 							<li>
-								<button
-									className='text-warning'
-									onClick={() => {
-										localStorage.removeItem('userId');
-										redirect('/');
-									}}
-								>
+								<button className='text-warning' onClick={() => signOut()}>
 									Logout
 								</button>
 							</li>
