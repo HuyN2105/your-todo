@@ -27,7 +27,7 @@ const NavBar = () => {
 
 	return (
 		<>
-			<div className='navbar bg-base-100 max-sm:-translate-x-4'>
+			<div className='navbar bg-base-100 max-sm:-translate-x-3.5'>
 				<div className='flex-1 navbar-start'>
 					<a className='btn btn-ghost text-xl'>yourTodo</a>
 				</div>
