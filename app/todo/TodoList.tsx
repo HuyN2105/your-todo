@@ -101,14 +101,32 @@ function TodoList({ todoLists }: props) {
 									</div>
 								</td>
 								<td>
-									<span className='badge badge-ghost badge-sm'>
-										{item.detail}
-									</span>
+									<span className='badge-sm'>{item.detail}</span>
 								</td>
 								<td>
-									<button onClick={() => handleDeleteItem(item)}>
-										<FontAwesomeIcon icon={faTrash} className='text-error' />
-									</button>
+									<div className='flex-none gap-2 navbar-end'>
+										<div className='dropdown dropdown-end'>
+											<button>
+												<FontAwesomeIcon
+													icon={faTrash}
+													className='text-error'
+												/>
+											</button>
+											<ul
+												tabIndex={0}
+												className='mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52'
+											>
+												<li>
+													<button
+														className='text-warning'
+														onClick={() => handleDeleteItem(item)}
+													>
+														Delete
+													</button>
+												</li>
+											</ul>
+										</div>
+									</div>
 								</td>
 							</tr>
 						))}

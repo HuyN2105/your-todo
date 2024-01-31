@@ -27,7 +27,8 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"app/todo/TodoList.tsx",
-		"app/todo/page.tsx"
+		"app/todo/page.tsx",
+		"app/login/setcookie/page.js"
 	],
 	"exclude": ["node_modules"]
 }
