@@ -19,6 +19,7 @@ function AuthForm() {
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
+		console.log(session?.status);
 		if (session?.status == 'authenticated') {
 			router.push('/users');
 		}
