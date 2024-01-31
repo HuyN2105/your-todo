@@ -27,13 +27,13 @@ const NavBar = () => {
 
 	return (
 		<>
-			<div className='navbar bg-base-100'>
+			<div className='navbar bg-base-100 max-sm:-translate-x-4'>
 				<div className='flex-1 navbar-start'>
 					<a className='btn btn-ghost text-xl'>yourTodo</a>
 				</div>
 				<div
 					role='tablist'
-					className='tabs tabs-lifted navbar-center w-20 translate-y-0.25'
+					className='tabs tabs-lifted navbar-center w-20 sm:-translate-x-8'
 				>
 					{pages.map((page) => (
 						<Link
