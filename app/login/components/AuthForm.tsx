@@ -52,12 +52,15 @@ function AuthForm() {
 			axios
 				.post('/api/register', data)
 				.then(() =>
-					signIn('credentials', data).then((callback) => {
-						if (callback?.ok && !callback?.error) {
-							toast.success('Sign up successfully!');
-							router.push('/login');
+					signIn('credentials', { ...data, redirect: false }).then(
+						(callback) => {
+							if (callback?.ok && !callback?.error) {
+								toast.success('Sign up successfully!');
+								signOut();
+								router.push('/login');
+							}
 						}
-					})
+					)
 				)
 				.catch(() => toast.error('Something went wrong!'))
 				.finally(() => setIsLoading(false));

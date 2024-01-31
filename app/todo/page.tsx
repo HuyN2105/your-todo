@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect, useState, Key } from 'react';
-import { redirect } from 'next/navigation';
 
 import NavBar from '../navBar';
 import TodoList from './TodoList';
