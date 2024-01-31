@@ -20,7 +20,6 @@ model User{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  todoIds String[] @db.ObjectId
   todoList TodoItem[]
 
   accounts Account[]
@@ -52,6 +51,6 @@ model TodoItem{
   detail String?
   completed Boolean?
 
-  userId String @db.ObjectId
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userEmail String @unique
+  user User @relation(fields: [userEmail], references: [email], onDelete: Cascade)
 }

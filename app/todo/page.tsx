@@ -4,8 +4,12 @@ import React, { useEffect, useState, Key } from 'react';
 import NavBar from '../navBar';
 import TodoList from './TodoList';
 import AddTodo from './AddTodo';
+import { useSession } from 'next-auth/react';
 
 function Todo() {
+	const session = useSession();
+	console.log(session);
+
 	const [todoLists, setTodoLists] = useState([]);
 	const ListRequestURL = '/api/userlist/';
 

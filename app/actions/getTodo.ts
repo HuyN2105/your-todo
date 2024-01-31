@@ -1,17 +1,19 @@
 import prisma from '@/app/libs/prismadb';
 
-const getTodoList = async (userId: string) => {
+const getTodoList = async (sessionEmail: string) => {
 	try {
-		const todo = await prisma.todoItem.findMany({
-			where: {
-				userId: userId,
+		const user = await prisma.user.findMany({
+			include: {
+				todoList: true,
 			},
-			orderBy: {
-				createdAt: 'desc',
+			where: {
+				email: sessionEmail,
 			},
 		});
-		return todo;
+		return user;
 	} catch (error: any) {
 		return [];
 	}
 };
+
+export default getTodoList;
