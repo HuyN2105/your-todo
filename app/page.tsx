@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from './navBar';
 import Link from 'next/link';
 import Footer from './Footer';
 import Image from 'next/image';
@@ -16,8 +15,8 @@ function Home() {
 								Manage your todo with ease
 							</h1>
 							<p className='max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400'>
-								A simple and intuitive todo management app made by a senior high
-								school students.
+								A simple and intuitive todo management app to replace paper and
+								enhance your daily workflow.
 							</p>
 							<Link className='btn btn-primary w-[148px]' href='/login'>
 								Get Started

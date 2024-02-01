@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../navBar';
 import Link from 'next/link';
 import LogoNoBG from '../Assets/LogoNoBG.png';
 import Image from 'next/image';
