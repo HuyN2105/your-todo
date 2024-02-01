@@ -55,7 +55,7 @@ function AuthForm() {
 					signIn('credentials', { ...data, redirect: false }).then(
 						(callback) => {
 							if (callback?.ok && !callback?.error) {
-								toast.success('Sign up successfully!');
+								toast.success('Success!');
 								signOut();
 								router.push('/login');
 							}
@@ -72,8 +72,8 @@ function AuthForm() {
 						toast.error('Invalid credentials');
 					}
 					if (callback?.ok && !callback?.error) {
-						toast.success('Login successfully!');
-						router.push('/users');
+						toast.success('Success!');
+						router.push('/todo');
 					}
 				})
 				.finally(() => setIsLoading(false));
@@ -89,8 +89,8 @@ function AuthForm() {
 					toast.error('Invalid credentials');
 				}
 				if (callback?.ok && !callback?.error) {
-					toast.success('Login successfully!');
-					router.push('/users');
+					toast.success('!');
+					router.push('/todo');
 				}
 			})
 			.finally(() => setIsLoading(false));

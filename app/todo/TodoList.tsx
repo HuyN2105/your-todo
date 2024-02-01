@@ -41,7 +41,7 @@ function TodoList({ handleRefetch, reFetch }: props) {
 			.put('/api/todo', { itemId: item.id, newState: !item.completed })
 			.then(() => {
 				handleRefetch();
-				toast.success('Done!');
+				toast.success('Success!');
 			})
 			.catch(() => toast.error('Something went wrong!'));
 	};
@@ -51,7 +51,7 @@ function TodoList({ handleRefetch, reFetch }: props) {
 			.post('/api/todo/delete', { itemId: item.id })
 			.then(() => {
 				handleRefetch();
-				toast.success('Delete item successfully!');
+				toast.success('Success!');
 			})
 			.catch(() => toast.error('Something went wrong!'));
 	};
@@ -64,9 +64,7 @@ function TodoList({ handleRefetch, reFetch }: props) {
 					<thead>
 						<tr>
 							<th>
-								<label>
-									<input type='checkbox' className='checkbox' />
-								</label>
+								<label></label>
 							</th>
 							<th>Todo</th>
 							<th>Detail</th>
@@ -83,7 +81,7 @@ function TodoList({ handleRefetch, reFetch }: props) {
 												type='checkbox'
 												className='checkbox'
 												checked={item.completed as boolean}
-												onChange={(e) => handleStateChange(item)}
+												onChange={() => handleStateChange(item)}
 											/>
 										</label>
 									</th>

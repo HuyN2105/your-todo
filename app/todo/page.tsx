@@ -1,7 +1,6 @@
 'use client';
-import React, { useEffect, useState, Key } from 'react';
+import React, { useState } from 'react';
 
-import NavBar from '../navBar';
 import TodoList from './TodoList';
 import AddTodo from './AddTodo';
 

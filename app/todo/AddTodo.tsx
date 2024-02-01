@@ -25,7 +25,7 @@ function AddTodo({ handleRefetch }: props) {
 				})
 				.then(() => {
 					handleRefetch();
-					toast.success('Item added successfully!');
+					toast.success('Success!');
 				})
 				.catch(() => toast.error('Something went wrong!'));
 			setNewItemTitle('');

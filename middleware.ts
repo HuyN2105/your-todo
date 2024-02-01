@@ -8,5 +8,5 @@ export default withAuth({
 });
 
 export const config = {
-	matcher: ['/users/:path*', '/todo/:path*'],
+	matcher: ['/todo/:path*'],
 };
