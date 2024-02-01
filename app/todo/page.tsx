@@ -4,16 +4,18 @@ import React, { useEffect, useState, Key } from 'react';
 import NavBar from '../navBar';
 import TodoList from './TodoList';
 import AddTodo from './AddTodo';
-import { useSession } from 'next-auth/react';
 
 function Todo() {
-	const session = useSession();
-	console.log(session);
+	const [reFetch, setReFetch] = useState(false);
+
+	function handleRefetch() {
+		setReFetch(!reFetch);
+	}
 
 	return (
 		<>
-			<TodoList />
-			<AddTodo />
+			<TodoList handleRefetch={handleRefetch} reFetch={reFetch} />
+			<AddTodo handleRefetch={handleRefetch} />
 		</>
 	);
 }

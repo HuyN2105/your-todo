@@ -1,53 +1,58 @@
 'use client';
-import React, { Key } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { pusherServer } from '@/app/libs/pusher';
+import React, { Key, useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useSession } from 'next-auth/react';
+
+import { FaTrash } from 'react-icons/fa';
 
 interface List {
-	_id: String;
-	title: String;
-	detail: String;
-	completed: Boolean;
-	createdAt: String;
-	updatedAt: String;
-	__v: Number;
+	id: string;
+	completed: boolean;
+	title: string;
+	detail: string;
+	createdAt: string;
+	userEmail: string;
 }
 
 interface props {
-	todoLists: List[];
+	reFetch: boolean;
+	handleRefetch: Function;
 }
 
-// const getTodoList = async () => {
-// 	try {
-// 		const res = await fetch('http://localhost:3000/api/todolist/', {
-// 			cache: 'no-store',
-// 		});
+function TodoList({ handleRefetch, reFetch }: props) {
+	const session = useSession();
 
-// 		if (!res.ok) {
-// 			throw new Error('Failed to fetch todoList');
-// 		}
-// 		const data = await res.json();
-// 		return data.todoList;
-// 	} catch (error) {
-// 		console.log('Error Loading TodoList: ', error);
-// 	}
-// };
+	const sessionEmail = session?.data?.user?.email;
 
-function TodoList() {
+	const [todoLists, setTodoLists] = useState<List[]>([]);
+
+	useEffect(() => {
+		if (sessionEmail)
+			axios
+				.post('/api/getlist', { userEmail: sessionEmail })
+				.then((response) => {
+					setTodoLists(response.data.todoList);
+				});
+	}, [sessionEmail, reFetch]);
+
 	const handleStateChange = (item: List) => {
 		axios
-			.put('/api/todo', { itemId: item._id, newState: !item.completed })
-			.then(() => toast.success('Done!'))
+			.put('/api/todo', { itemId: item.id, newState: !item.completed })
+			.then(() => {
+				handleRefetch();
+				toast.success('Done!');
+			})
 			.catch(() => toast.error('Something went wrong!'));
 	};
 
 	const handleDeleteItem = (item: List) => {
 		axios
-			.post('/api/todo/delete', { itemId: item._id })
-			.then(() => toast.success('Delete item successfully!'))
+			.post('/api/todo/delete', { itemId: item.id })
+			.then(() => {
+				handleRefetch();
+				toast.success('Delete item successfully!');
+			})
 			.catch(() => toast.error('Something went wrong!'));
 	};
 
@@ -69,59 +74,59 @@ function TodoList() {
 						</tr>
 					</thead>
 					<tbody>
-						{/* {todoLists.map((item) => (
-							<tr key={item._id as Key}>
-								<th>
-									<label>
-										<input
-											type='checkbox'
-											className='checkbox'
-											checked={item.completed as boolean}
-											onChange={(e) => handleStateChange(item)}
-										/>
-									</label>
-								</th>
-								<td>
-									<div className='flex items-center gap-3'>
-										<div
-											className={
-												item.completed ? 'font-bold line-through' : 'font-bold'
-											}
-										>
-											{item.title}
-										</div>
-									</div>
-								</td>
-								<td>
-									<span className='badge-sm'>{item.detail}</span>
-								</td>
-								<td>
-									<div className='flex-none gap-2 navbar-end'>
-										<div className='dropdown dropdown-end'>
-											<button>
-												<FontAwesomeIcon
-													icon={faTrash}
-													className='text-error'
-												/>
-											</button>
-											<ul
-												tabIndex={0}
-												className='mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52'
+						{todoLists &&
+							todoLists.map((item) => (
+								<tr key={item.id as Key}>
+									<th>
+										<label>
+											<input
+												type='checkbox'
+												className='checkbox'
+												checked={item.completed as boolean}
+												onChange={(e) => handleStateChange(item)}
+											/>
+										</label>
+									</th>
+									<td>
+										<div className='flex items-center gap-3'>
+											<div
+												className={
+													item.completed
+														? 'font-bold line-through'
+														: 'font-bold'
+												}
 											>
-												<li>
-													<button
-														className='text-warning'
-														onClick={() => handleDeleteItem(item)}
-													>
-														Delete
-													</button>
-												</li>
-											</ul>
+												{item.title}
+											</div>
 										</div>
-									</div>
-								</td>
-							</tr>
-						))} */}
+									</td>
+									<td>
+										<span className='badge-sm'>{item.detail}</span>
+									</td>
+									<td>
+										<div className='flex-none gap-2 navbar-end'>
+											<div className='dropdown dropdown-end'>
+												<button>
+													<FaTrash className='text-error' />
+												</button>
+												<ul
+													tabIndex={0}
+													className='mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52'
+												>
+													<li>
+														<button
+															className='text-error'
+															onClick={() => handleDeleteItem(item)}
+														>
+															Delete
+														</button>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</td>
+								</tr>
+							))}
 					</tbody>
 					{/* foot */}
 					<tfoot>

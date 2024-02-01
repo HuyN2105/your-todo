@@ -4,7 +4,11 @@ import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
-function AddTodo() {
+interface props {
+	handleRefetch: Function;
+}
+
+function AddTodo({ handleRefetch }: props) {
 	const session = useSession();
 
 	const [newItemTitle, setNewItemTitle] = useState('');
@@ -19,7 +23,10 @@ function AddTodo() {
 					detail: newItemDetail,
 					userEmail: session?.data?.user?.email,
 				})
-				.then(() => toast.success('Item added successfully!'))
+				.then(() => {
+					handleRefetch();
+					toast.success('Item added successfully!');
+				})
 				.catch(() => toast.error('Something went wrong!'));
 			setNewItemTitle('');
 			setNewItemDetail('');

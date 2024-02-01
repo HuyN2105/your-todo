@@ -13,7 +13,6 @@ const NavBar = () => {
 	const router = useRouter();
 
 	const cp = usePathname();
-	console.log(cp);
 
 	const pages = [
 		{
