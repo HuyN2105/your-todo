@@ -21,7 +21,7 @@ function AuthForm() {
 	useEffect(() => {
 		console.log(session?.status);
 		if (session?.status == 'authenticated') {
-			router.push('/users');
+			router.push('/todo');
 		}
 	}, [session?.status, router]);
 
