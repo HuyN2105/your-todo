@@ -103,24 +103,9 @@ function TodoList({ handleRefetch, reFetch }: props) {
 									</td>
 									<td>
 										<div className='flex-none gap-2 navbar-end'>
-											<div className='dropdown dropdown-end'>
-												<button>
-													<FaTrash className='text-error' />
-												</button>
-												<ul
-													tabIndex={0}
-													className='mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52'
-												>
-													<li>
-														<button
-															className='text-error'
-															onClick={() => handleDeleteItem(item)}
-														>
-															Delete
-														</button>
-													</li>
-												</ul>
-											</div>
+											<button onClick={() => handleDeleteItem(item)}>
+												<FaTrash className='text-error' />
+											</button>
 										</div>
 									</td>
 								</tr>
